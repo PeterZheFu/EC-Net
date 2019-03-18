@@ -6,25 +6,24 @@ import argparse
 
 import pptk
 import numpy as np
-#P = np.random.rand(100,3)
-#v = pptk.viewer(P)
 
 parser = argparse.ArgumentParser("simple_example")
-parser.add_argument("file_path", help="a file with four columns: x, y, z, deviation error", type=str)
+parser.add_argument("file_path1", help="a file with four columns: x, y, z, deviation error", type=str)
+parser.add_argument("file_path2", help="a file with four columns: x, y, z, deviation error", type=str)
 args = parser.parse_args()
-print(args.file_path)
 
-matrix = np.loadtxt(args.file_path)#, usecols=range(6))
+matrix1 = np.loadtxt(args.file_path1)#, usecols=range(6))
+matrix2 = np.loadtxt(args.file_path2)
 
 fig = pyplot.figure()
 ax = Axes3D(fig)
 
-#sequence_containing_x_vals = matrix[:,0]
-#sequence_containing_y_vals = matrix[:,1]
-#sequence_containing_z_vals = matrix[:,2]
-#sequence_containing_deviation_vals = matrix[:,3]
 
-v = pptk.viewer(matrix[:,0:3])
+v = pptk.viewer(matrix1[:,0:3])
 
-#ax.scatter(sequence_containing_x_vals, sequence_containing_y_vals, sequence_containing_z_vals)
-#pyplot.show()
+v.set(show_axis = True)
+
+#attr_color = pptk.rand(1)       # 1 random scalar
+#v.attributes(attr_color)
+v.color_map([[1, 1, 1]])
+
